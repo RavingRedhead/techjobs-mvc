@@ -27,5 +27,16 @@
         </div>
     </div>
 
+    <div th:fragment="search-results">
+        <h3 th:text="${jobs.size() + ' Result(s)'}">Count</h3>
+
+        <table th:each="result : ${jobs}" class="job-listing">
+            <tr th:each="field, idx : ${result}" th:class="${idx.odd} ? 'odd'">
+                <td th:text="${#strings.capitalizeWords(field.key)}">Key</td>
+                <td th:text="${field.value}">Value</td>
+            </tr>
+        </table>
+    </div>
+
 </body>
 </html>
